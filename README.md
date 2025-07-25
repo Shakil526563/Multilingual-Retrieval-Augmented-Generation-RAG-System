@@ -367,7 +367,7 @@ python manage.py initialize_rag --force-rebuild
 ## 1. What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
 
 **Text Extraction:**
-- The system uses **PyMuPDF** (fitz) for PDF text extraction. This library is chosen for its robust support for Unicode, including Bengali script, and its ability to extract text with font and layout information.
+The system uses **PyMuPDF** (fitz) for PDF text extraction. This library is chosen for its robust support for Unicode, including Bengali script, and its ability to extract text with font and layout information.
 
 **Formatting Challenges:**
 Yes, I did. Extracting Bengali text from the PDF was particularly challenging due to inconsistent formatting and encoding issues. Because Bengla PDFs often have font encoding issues, missing ligatures, or broken word boundaries. I spent almost two days resolving this.
@@ -384,7 +384,7 @@ This method keeps each chunk at a good size — not too small and not too big �
 The overlap helps the system remember the connection between one chunk and the next.
 This makes it easier for the system to understand the text and give better answers when searching or matching with questions.
 ## 3. What embedding model did you use? Why did you choose it? How does it capture the meaning of the text?
-**Embedding Model:**
+
 I used the model called **sentence-transformers/all-MiniLM-L6-v2** from HuggingFace.
 
 **Why I chose it:**
@@ -396,7 +396,7 @@ It’s popular for tasks like search and question-answering, and it fits well wi
 The model turns each sentence or paragraph into a vector — a list of numbers that represent its meaning.
 Then, we can compare these vectors to find which texts are most similar to a user’s question.
 ## 4. How are you comparing the query with your stored chunks? Why did you choose this similarity method and storage setup?
-**How it works:**
+
 I use **cosine similarity** to compare the user's question and the stored text chunks.
 The data is stored and searched using FAISS (Facebook AI Similarity Search).
 
@@ -404,7 +404,7 @@ The data is stored and searched using FAISS (Facebook AI Similarity Search).
 Cosine similarity helps measure how similar two pieces of text are by comparing their meaning (as vectors). It looks at the “angle” between the question and the document vectors.
 FAISS is a very fast and powerful tool that helps search through a large number of stored text chunks quickly and accurately.
 ## 5. How do you ensure that the question and the document chunks are compared meaningfully? What would happen if the query is vague or missing context?
-**How I make the comparison meaningful:**
+
 I use the **same embedded model** to turn both the user’s question and the document chunks into vectors, so they are in the same format and meaning space.
 I split the documents carefully and added a bit of overlap between chunks so that important context is not lost.
  
