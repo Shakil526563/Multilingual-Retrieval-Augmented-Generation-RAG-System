@@ -423,7 +423,7 @@ After retrieving chunks, apply extra filtering or post-processing to better matc
 
 
 ## 📝 Note:
-**This project uses only free models and tools. Due to limitations in handling large files, some pages were removed to ensure better accuracy and performance in answering queries.If OpenAI or other premium models were used, the system could process larger files faster and generate more accurate responses.**
+This project uses only free models and tools. Due to limitations in handling large files, some pages were removed to ensure better accuracy and performance in answering queries.If OpenAI or other premium models were used, the system could process larger files faster and generate more accurate responses.
 
 
 ## 📄 License
