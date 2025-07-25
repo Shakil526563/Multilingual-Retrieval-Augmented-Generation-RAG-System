@@ -367,7 +367,8 @@ python manage.py initialize_rag --force-rebuild
 ## 1. What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
 
 **Text Extraction:**
-- The system uses PyMuPDF (fitz) for PDF text extraction. This library is chosen for its robust support for Unicode, including Bengali script, and its ability to extract text with font and layout information.
+- The system uses **PyMuPDF** (fitz) for PDF text extraction. This library is chosen for its robust support for Unicode, including Bengali script, and its ability to extract text with font and layout information.
+
 **Formatting Challenges:**
 Yes, I did. Extracting Bengali text from the PDF was particularly challenging due to inconsistent formatting and encoding issues. Because Bengla PDFs often have font encoding issues, missing ligatures, or broken word boundaries. I spent almost two days resolving this.
 After extensive research, I found that converting the PDF to a txt file provided more control over the content. To ensure high-quality extraction, my code applies multiple methods—standard, font-aware, and layout-based extraction
@@ -375,48 +376,54 @@ Additionally, post-processing steps were implemented to clean up whitespace, pun
 
 ## 2. What chunking strategy did you choose (e.g. paragraph-based, sentence-based, character limit)? Why do you think it works well for semantic retrieval?
 
-I used a character-based chunking method using RecursiveCharacterTextSplitter from LangChain.
+I used a character-based chunking method using **RecursiveCharacterTextSplitter** from LangChain.
 Each chunk has 1500 characters, and there is a 200-character overlap between chunks.
-Why it works well:
+
+**Why it works well:**
 This method keeps each chunk at a good size — not too small and not too big — so the meaning stays clear.
 The overlap helps the system remember the connection between one chunk and the next.
 This makes it easier for the system to understand the text and give better answers when searching or matching with questions.
 ## 3. What embedding model did you use? Why did you choose it? How does it capture the meaning of the text?
-Embedding Model:
-I used the model called sentence-transformers/all-MiniLM-L6-v2 from HuggingFace.
-Why I chose it:
+**Embedding Model:**
+I used the model called **sentence-transformers/all-MiniLM-L6-v2** from HuggingFace.
+
+**Why I chose it:**
 This model is fast, efficient and gives good results.
 It works well for both English and Bengali text.
 It’s popular for tasks like search and question-answering, and it fits well with FAISS for storing and finding similar vectors.
-How it understands meaning:
+
+**How it understands meaning:**
 The model turns each sentence or paragraph into a vector — a list of numbers that represent its meaning.
 Then, we can compare these vectors to find which texts are most similar to a user’s question.
 ## 4. How are you comparing the query with your stored chunks? Why did you choose this similarity method and storage setup?
-How it works:
-I use cosine similarity to compare the user's question and the stored text chunks.
+**How it works:**
+I use **cosine similarity** to compare the user's question and the stored text chunks.
 The data is stored and searched using FAISS (Facebook AI Similarity Search).
-Why this method:
+
+**Why this method:**
 Cosine similarity helps measure how similar two pieces of text are by comparing their meaning (as vectors). It looks at the “angle” between the question and the document vectors.
 FAISS is a very fast and powerful tool that helps search through a large number of stored text chunks quickly and accurately.
 ## 5. How do you ensure that the question and the document chunks are compared meaningfully? What would happen if the query is vague or missing context?
-How I make the comparison meaningful:
-I use the same embedded model to turn both the user’s question and the document chunks into vectors, so they are in the same format and meaning space.
+**How I make the comparison meaningful:**
+I use the **same embedded model** to turn both the user’s question and the document chunks into vectors, so they are in the same format and meaning space.
 I split the documents carefully and added a bit of overlap between chunks so that important context is not lost.
-What if the question is vague or unclear?
+ 
+ **What if the question is vague or unclear?**
 If the question doesn’t give enough information, the system might return less accurate or unrelated chunks.
 In such cases, the system is designed to say something like “Not enough information found” instead of giving a wrong answer.
 ## 6. Do the results seem relevant? If not, what might improve them (e.g. better chunking, better embedding model, larger document)?
-Relevance:
+**Relevance:**
 Yes, the evaluation results show high relevance and accuracy on the test set. The results are accurate when the question is clear and the document is well-written.
 If the question is vague or the document has poor formatting, the results might be less accurate.
-How to improve:
+
+**How to improve:**
 Use a Bengali-specific or multilingual embedding model to better understand Bengali queries.
 Improve chunking by using sentence-based chunks or adapting chunk size based on the content.
 After retrieving chunks, apply extra filtering or post-processing to better match the user's intent.
 
 
 📝 Note:
-This project uses only free models and tools. Due to limitations in handling large files, some pages were removed to ensure better accuracy and performance in answering queries.If OpenAI or other premium models were used, the system could process larger files faster and generate more accurate responses.
+**This project uses only free models and tools. Due to limitations in handling large files, some pages were removed to ensure better accuracy and performance in answering queries.If OpenAI or other premium models were used, the system could process larger files faster and generate more accurate responses.**
 
 
 ## 📄 License
