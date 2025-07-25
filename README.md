@@ -162,8 +162,8 @@ https://github.com/user-attachments/assets/6ced551e-af7b-4f25-9f3a-a4ce5cbcf049
 - Context preservation across queries
 
 ## 🏗️ Architecture
+<img width="378" height="536" alt="image" src="https://github.com/user-attachments/assets/bc775801-6a88-46ff-a007-f4ae57f29d83" />
 
-<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/b66afb66-bb6d-46b1-818d-44ae7521dbcb" />
 
 
 ## 📖 API Documentation
