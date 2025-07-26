@@ -28,7 +28,7 @@ This guide provides step-by-step instructions to set up and run the Multilingual
 Before starting, ensure you have:
 - ✅ Python 3.8+ installed
 - ✅ Git (optional, for cloning)
-- ✅ PDF document in the `data/` folder
+- ✅ PDF and others document in the `data/` folder
 - ✅ Internet connection (for package installation)
 
 ## 🛠️ Installation Steps
@@ -137,8 +137,8 @@ https://github.com/user-attachments/assets/6ced551e-af7b-4f25-9f3a-a4ce5cbcf049
 
 ## 🔧 System Components
 
-### 1. PDF Processor
-- Extracts text from PDF files
+### 1. Document Processor
+- Extracts text from PDF or others files
 - Handles Bengali and English text
 - Intelligent text cleaning and normalization
 - Document chunking with overlap
