@@ -376,8 +376,7 @@ python manage.py initialize_rag --force-rebuild
 
 ## 1. What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
 
-**Text Extraction:**
-The system uses **PyMuPDF** (fitz) for PDF text extraction. This library is chosen for its robust support for Unicode, including Bengali script, and its ability to extract text with font and layout information.
+This code extracts text from TXT, DOCX, and PDF files with Bengali language support. For TXT files, it uses Python’s built-in open() method with multiple encodings to ensure proper decoding of Bengali characters. For DOCX files, it uses the python-docx library to extract text from both paragraphs and tables. For PDFs, it uses the PyMuPDF (fitz) library, which is effective for handling Bengali fonts and complex layouts. Each method includes preprocessing for clean and consistent output.
 
 **Formatting Challenges:**
 Yes, I did. Extracting Bengali text from the PDF was particularly challenging due to inconsistent formatting and encoding issues. Because Bengla PDFs often have font encoding issues, missing ligatures, or broken word boundaries. I spent almost two days resolving this.
