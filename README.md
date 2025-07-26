@@ -128,6 +128,16 @@ curl -X POST http://127.0.0.1:8000/api/v1/chat/ \
 
 https://github.com/user-attachments/assets/2231e255-0671-435a-ae0f-039b635d6a89
 
+
+**Sample Test Case: With Other Question** 
+
+
+
+https://github.com/user-attachments/assets/029072b8-fdf2-4356-9e49-6f34a512894d
+
+
+
+
 **Sample Test Case: with English** 
 
 
