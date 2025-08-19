@@ -60,14 +60,14 @@ class BengaliTextProcessor:
         text = re.sub(r'[^\w\s.,!?;:\-\'"()\[\]{}]', '', text)
         
         # Remove multiple punctuation marks
-        text = re.sub(r'[.]{3,}', '...', text)  # Multiple dots to ellipsis
-        text = re.sub(r'[!]{2,}', '!', text)    # Multiple exclamations to single
-        text = re.sub(r'[?]{2,}', '?', text)    # Multiple questions to single
-        text = re.sub(r'[-]{2,}', '--', text)   # Multiple dashes to double dash
+        text = re.sub(r'[.]{3,}', '...', text)  
+        text = re.sub(r'[!]{2,}', '!', text)    
+        text = re.sub(r'[?]{2,}', '?', text)   
+        text = re.sub(r'[-]{2,}', '--', text)   
         
         # Clean up spacing around punctuation
-        text = re.sub(r'\s+([.,!?;:])', r'\1', text)  # Remove space before punctuation
-        text = re.sub(r'([.,!?;:])\s*', r'\1 ', text)  # Ensure single space after punctuation
+        text = re.sub(r'\s+([.,!?;:])', r'\1', text)  
+        text = re.sub(r'([.,!?;:])\s*', r'\1 ', text)  
         
         # Fix common formatting issues
         text = re.sub(r'(\w)\s*\'\s*(\w)', r"\1'\2", text)  # Fix contractions like "don ' t" -> "don't"
@@ -82,23 +82,22 @@ class BengaliTextProcessor:
         # Remove extra whitespaces
         text = re.sub(r'\s+', ' ', text)
         
-        # Remove unwanted characters but preserve both Bengali and English scripts
-        # Include common Unicode punctuation that might come from PDF fonts
+  
         text = re.sub(r'[^\u0980-\u09FF\w\s.,!?;:\-\'"()\[\]{}।\u2013\u2014\u2018\u2019\u201C\u201D]', '', text)
         
         # Fix Bengali-specific issues from PDF extraction
-        text = re.sub(r'[\u09BC]+', '\u09BC', text)  # Normalize nukta
-        text = re.sub(r'[\u09CD]+', '\u09CD', text)  # Normalize hasanta
+        text = re.sub(r'[\u09BC]+', '\u09BC', text) 
+        text = re.sub(r'[\u09CD]+', '\u09CD', text)  
         
         # Remove multiple punctuation for both languages
-        text = re.sub(r'[।]{2,}', '।', text)    # Bengali punctuation
-        text = re.sub(r'[.]{3,}', '...', text)  # English ellipsis
-        text = re.sub(r'[!]{2,}', '!', text)    # Exclamations
-        text = re.sub(r'[?]{2,}', '?', text)    # Questions
+        text = re.sub(r'[।]{2,}', '।', text)  
+        text = re.sub(r'[.]{3,}', '...', text) 
+        text = re.sub(r'[!]{2,}', '!', text)    
+        text = re.sub(r'[?]{2,}', '?', text)    
         
         # Clean up spacing around punctuation (both Bengali and English)
-        text = re.sub(r'\s+([.,!?;:।])', r'\1', text)  # Remove space before punctuation
-        text = re.sub(r'([.,!?;:।])\s*', r'\1 ', text)  # Ensure single space after punctuation
+        text = re.sub(r'\s+([.,!?;:।])', r'\1', text)  
+        text = re.sub(r'([.,!?;:।])\s*', r'\1 ', text)  
         
         # Fix common PDF extraction artifacts for Bengali text
         text = re.sub(r'\s+([কখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহ])', r' \1', text)
